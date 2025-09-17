@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Preferred Time Question</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f7f7f7;
+    }
+    .container {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    .option {
+      display: block;
+      margin: 12px 0;
+      cursor: pointer;
+    }
+    .submit-btn {
+      margin-top: 18px;
+      padding: 10px 18px;
+      background: #357edd;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .submit-btn:disabled {
+      background: #b0c4de;
+      cursor: not-allowed;
+    }
+    .result {
+      margin-top: 24px;
+      font-weight: bold;
+      color: #357edd;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Which of these times work for you?</h2>
+    <form id="mcqForm">
+      <label class="option">
+        <input type="checkbox" name="time" value="Morning">
+        Morning
+      </label>
+      <label class="option">
+        <input type="checkbox" name="time" value="Afternoon">
+        Afternoon
+      </label>
+      <label class="option">
+        <input type="checkbox" name="time" value="Evening">
+        Evening
+      </label>
+      <button class="submit-btn" id="submitBtn" type="submit">Submit</button>
+    </form>
+    <div class="result" id="result"></div>
+  </div>
+  <script>
+    const form = document.getElementById('mcqForm');
+    const result = document.getElementById('result');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const checked = Array.from(form.elements['time'])
+        .filter(input => input.checked)
+        .map(input => input.value);
+      if (checked.length === 0) {
+        result.textContent = "Please select at least one option.";
+        result.style.color = "#bb2525";
+        return;
+      }
+      result.style.color = "#357edd";
+      result.textContent = "You selected: " + checked.join(', ');
+    });
+  </script>
+</body>
+</html>

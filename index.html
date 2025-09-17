@@ -10,6 +10,8 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; 
       margin: 0; 
       padding: 0;
+      color: #111;
+      line-height: 1.45;
     }
     header {
       background: #151515;
@@ -17,10 +19,11 @@
       display: flex;
       align-items: center;
       padding: 0.75rem 1.5rem;
+      gap: 0.75rem;
     }
     header img {
       height: 40px;
-      margin-right: 1rem;
+      width: auto;
     }
     header h1 {
       font-size: 1.125rem;
@@ -28,7 +31,9 @@
       flex: 1;
     }
     main {
-      padding: 2rem;
+      padding: 2rem 1.5rem;
+      max-width: 980px;
+      margin: 0 auto;
     }
     .hint { 
       background:#f6f8fa; 
@@ -47,37 +52,34 @@
 </head>
 <body>
 
-  <!-- 🔹 Page header -->
+  <!-- Site header -->
   <header>
     <img src="https://i.postimg.cc/BnW9WBTm/wp.png" alt="Waypoint Logo" />
     <h1>Waypoint Healthcare Solutions</h1>
 
-    <!-- 🔹 Bland Widget Config (new loader) -->
-    
-
+    <!-- Bland widget loader (kept in header so it initializes early) -->
     <script>
       window.blandSettings = {
-        widget_id: "c6914c82-e5de-40df-9af5-83ad1d636875",
+        widget_id: "cd64cb72-c72c-4f27-8164-e0fadbe06653",
+        // Optional: pass pathway variables to personalize the chat
+        // variables: { first_name: "Lisa", patient_id: "12345", language: "en" }
       };
     </script>
     <script src="https://widget.bland.ai/loader.js" defer></script>
   </header>
 
   <main>
-    <h2>Bland Webchat Test blue</h2>
+    <h2>Bland Webchat Test Page</h2>
     <p class="hint">
-      This is a test of the Bland webchat. 
+      This is a test of the Bland webchat. If the launcher doesn’t appear in the corner,
+      check the browser console for any blocked scripts or CSP issues.
     </p>
     <p class="hint">
-      Adding a Bland webchat to your organization’s website allows patients, members, or providers to interact with your virtual assistant in real time through a simple chat window. The webchat embeds directly on your site with just a few lines of script, branded with your organization’s logo, colors, and header. It provides the same conversational pathways you’ve built for phone or SMS outreach, but in a familiar, text-based interface that feels like live chat support. This makes it easy to engage visitors, capture structured data, and guide them to the right next steps without requiring a phone call.
-    </p>
-    <p class="hint">
-     Give it a try!!!
+      You can prefill pathway variables by adding them in <code>window.blandSettings.variables</code>
+      (see header script). Example: <code>{ first_name: "Lisa", patient_id: "12345" }</code>.
     </p>
   </main>
 
-  <noscript>
-    Please enable JavaScript to use the Bland chat widget.
-  </noscript>
+  <noscript>Please enable JavaScript to use the Bland chat widget.</noscript>
 </body>
 </html>
